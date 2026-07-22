@@ -1,0 +1,110 @@
+╔═══════════════════════════════════════════════════════════════╗
+║          🎉 RANKING CON FIREBASE - LISTO PARA USAR 🎉        ║
+╔═══════════════════════════════════════════════════════════════╗
+
+✅ ARCHIVOS ACTUALIZADOS:
+
+1. ✓ firebase-config.js  (NUEVO - Con tus credenciales)
+2. ✓ index.html         (Actualizado con ranking)
+3. ✓ script.js          (Actualizado con Firebase)
+4. ✓ styles.css         (Actualizado con estilos del ranking)
+5. ✓ config.js          (Sin cambios - tu configuración)
+
+═══════════════════════════════════════════════════════════════
+
+🚀 PRÓXIMOS PASOS (SOLO 2 PASOS MÁS):
+
+PASO 1: Configurar el Índice en Firebase (2 minutos)
+────────────────────────────────────────────────────
+1. Ve a Firebase Console: https://console.firebase.google.com/
+2. Selecciona tu proyecto: invitaciones-web-cad02
+3. En el menú lateral: Compilación → Firestore Database
+4. Ve a la pestaña "Índices"
+5. Haz clic en "Crear índice"
+6. Configura así:
+   - Colección: ranking
+   - Campo 1: puntaje → Descendente
+   - Campo 2: __name__ → Descendente (opcional)
+7. Haz clic en "Crear"
+8. Espera 2-5 minutos hasta que esté listo
+
+💡 IMPORTANTE: Si olvidas este paso, cuando alguien juegue verás
+un error con un LINK directo para crear el índice automáticamente.
+Solo haz clic en ese link y listo!
+
+PASO 2: Subir a Vercel (3 minutos)
+────────────────────────────────────
+Opción A - Si usas Git:
+  git add .
+  git commit -m "Agrega ranking con Firebase"
+  git push
+
+Opción B - Manual en Vercel:
+  1. Ve a vercel.com
+  2. Haz clic en tu proyecto
+  3. Sube los archivos actualizados
+
+═══════════════════════════════════════════════════════════════
+
+🎮 CÓMO FUNCIONA:
+
+1. Invitado abre tu invitación
+2. Click en "¡Jugar a explotar globos!"
+3. Juega por 60 segundos
+4. Ingresa su nombre
+5. Click en "Guardar en Ranking"
+6. ✅ Su puntaje se guarda en Firebase
+7. Ve su posición en el ranking
+
+═══════════════════════════════════════════════════════════════
+
+🔧 PERSONALIZACIÓN RÁPIDA:
+
+Tiempo del juego (en script.js línea ~240):
+  let gameTimeLeft = 60; // Cambia a 30, 45, 90, etc.
+
+Cantidad en ranking (en script.js línea ~440):
+  .limit(10) // Cambia a 5, 15, 20, etc.
+
+Puntos por globo (en script.js línea ~365):
+  gameScore += 10; // Cambia a 5, 20, etc.
+
+═══════════════════════════════════════════════════════════════
+
+❓ PREGUNTAS FRECUENTES:
+
+¿Firebase es gratis?
+→ Sí, plan gratuito incluye 50k lecturas/día (más que suficiente)
+
+¿Los puntajes se borran?
+→ No, quedan guardados permanentemente
+
+¿Puedo ver quién jugó?
+→ Sí, en Firebase Console → Firestore Database
+
+═══════════════════════════════════════════════════════════════
+
+🆘 SI ALGO FALLA:
+
+1. Abre la consola del navegador (F12)
+2. Busca errores en rojo
+3. Errores comunes:
+   ❌ "Missing index" → Firebase te da link para crearlo
+   ❌ "Permission denied" → Revisa las reglas de Firestore
+   ❌ "Firebase not defined" → Verifica que firebase-config.js
+                              esté cargando correctamente
+
+═══════════════════════════════════════════════════════════════
+
+💪 TU PROYECTO AHORA TIENE:
+
+✅ Juego con temporizador de 60 segundos
+✅ Guardado de puntajes en Firebase
+✅ Ranking en tiempo real con top 10
+✅ Sistema de medallas 🥇🥈🥉
+✅ Formulario para ingresar nombre
+✅ Interfaz responsive (funciona en móviles)
+
+═══════════════════════════════════════════════════════════════
+
+¡LISTO! Solo falta crear el índice y subir a Vercel 🚀

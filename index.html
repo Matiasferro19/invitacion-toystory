@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>🎉 Invitación de Cumpleaños 🎂</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Decoraciones de fondo -->
+  <div class="balloons">
+    <div class="balloon balloon-1"></div>
+    <div class="balloon balloon-2"></div>
+    <div class="balloon balloon-3"></div>
+    <div class="balloon balloon-4"></div>
+    <div class="balloon balloon-5"></div>
+    <div class="balloon balloon-6"></div>
+  </div>
+
+  <div class="confetti"></div>
+
+  <div class="container">
+    <!-- Imagen temática (Paw Patrol, Frozen, etc.) -->
+    <div class="theme-image" id="themeImage">
+      <!-- La imagen se cargará dinámicamente desde config.js -->
+    </div>
+
+    <!-- Encabezado festivo -->
+    <div class="header">
+      <h1 class="title" id="titulo"></h1>
+      <h2 class="subtitle" id="subtitulo"></h2>
+    </div>
+
+    <!-- Tarjeta con marco colorido estilo Paw Patrol -->
+    <div class="invitation-card">
+
+      <!-- Información del evento -->
+      <div class="event-info">
+        <div class="info-row">
+          <span class="info-icon">📅</span>
+          <span class="info-text">
+            Fecha
+            <strong id="fecha">4 de Abril</strong>
+          </span>
+        </div>
+
+        <div class="info-row">
+          <span class="info-icon">📍</span>
+          <span class="info-text">
+            Lugar
+            <strong id="lugar">Salón Cielo Azul</strong>
+          </span>
+        </div>
+
+        <div class="info-row">
+          <span class="info-icon">⏰</span>
+          <span class="info-text">
+            Horario
+            <strong id="hora">17 Hs</strong>
+          </span>
+        </div>
+      </div>
+
+      <!-- Separador -->
+      <div class="separator">
+        <span class="star">🤠</span>
+        <span class="star">🌟</span>
+        <span class="star">🚀</span>
+      </div>
+
+      <!-- Contador regresivo -->
+      <div class="countdown-section">
+        <h3 class="countdown-title">¡Faltan para la fiesta!</h3>
+        <div class="countdown" id="countdown">
+          <div class="time-box" id="daysBox">
+            <div class="time-number" id="days">00</div>
+            <div class="time-label">DÍAS</div>
+          </div>
+          <div class="time-box" id="hoursBox">
+            <div class="time-number" id="hours">00</div>
+            <div class="time-label">HORAS</div>
+          </div>
+          <div class="time-box" id="minutesBox">
+            <div class="time-number" id="minutes">00</div>
+            <div class="time-label">MIN</div>
+          </div>
+          <div class="time-box" id="secondsBox">
+            <div class="time-number" id="seconds">00</div>
+            <div class="time-label">SEG.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="buttons">
+        <a href="#" target="_blank" class="btn btn-location" id="btnMaps">
+          <span class="btn-icon">📍</span>
+          <span class="btn-text" id="textoBotonMaps">¿Cómo llegar?</span>
+        </a>
+
+        <a href="#" target="_blank" class="btn btn-whatsapp" id="btnWhatsapp">
+          <span class="btn-icon">📲</span>
+          <span class="btn-text" id="textoBotonWhatsApp">Confirmar asistencia</span>
+        </a>
+
+        <button class="btn btn-game" id="btnGame">
+          <span class="btn-icon">🎈</span>
+          <span class="btn-text">Jugá: Atrapa los emojis</span>
+        </button>
+
+        <button class="btn btn-ranking" id="btnRanking">
+          <span class="btn-icon">🏆</span>
+          <span class="btn-text">Ver Ranking</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer" id="mensajeFinal">
+      ¡Te espero para disfrutar una tarde súper divertida!!!
+    </div>
+  </div>
+
+  <!-- Rainbow decoration -->
+  <div class="rainbow"></div>
+
+  <!-- Botón de música flotante -->
+  <button id="musicControl" class="music-control">
+    <span class="music-icon">🎵</span>
+  </button>
+
+  <!-- Elemento de audio -->
+  <audio id="backgroundMusic" loop>
+    <source id="musicSource" src="" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
+  <!-- Overlay del Juego -->
+  <div id="gameOverlay" class="game-overlay">
+    <div class="game-header">
+      <div class="score-display">Puntos: <span id="scoreValue">0</span></div>
+      <div class="timer-display">Tiempo: <span id="timerValue">60</span>s</div>
+      <button id="closeGame" class="close-game">X</button>
+    </div>
+    <div id="gameContainer" class="game-container">
+      <!-- Los globos se generarán aquí -->
+    </div>
+    <div id="gameInstructions" class="game-instructions">
+      ¡Toca los emojis para atraparlos!
+    </div>
+
+    <!-- Formulario para guardar puntaje -->
+    <div id="saveScoreForm" class="save-score-form" style="display: none;">
+      <h3>¡Felicitaciones! 🎉</h3>
+      <p>Tu puntaje: <span id="finalScore">0</span></p>
+      <input type="text" id="playerName" placeholder="Ingresa tu nombre" maxlength="20">
+      <button id="saveScoreBtn" class="btn-save-score">Guardar en Ranking</button>
+    </div>
+  </div>
+
+  <!-- Overlay del Ranking -->
+  <div id="rankingOverlay" class="ranking-overlay">
+    <div class="ranking-container">
+      <button id="closeRanking" class="close-ranking">X</button>
+      <h2 class="ranking-title">🏆 Ranking de Jugadores</h2>
+      <div id="rankingList" class="ranking-list">
+        <div class="loading">Cargando ranking...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Alerta Personalizado -->
+  <div id="customAlertOverlay" class="custom-alert-overlay" style="display:none;">
+    <div class="custom-alert-box">
+      <div class="custom-alert-icon" id="customAlertIcon">🎉</div>
+      <p class="custom-alert-message" id="customAlertMessage"></p>
+      <button class="custom-alert-btn" id="customAlertOkBtn">¡Listo!</button>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+  <!-- Archivos JavaScript -->
+  <script src="firebase-config.js?v=1.0.1"></script>
+  <script src="config.js?v=1.0.1"></script>
+  <script src="script.js?v=1.0.1"></script>
+</body>
+
+</html>
