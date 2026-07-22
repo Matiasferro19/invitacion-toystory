@@ -315,6 +315,38 @@ let timerInterval;
 let timeLeft = 60;
 const gameItems = ['🤠', '🚀', '🛸'];
 
+// ============================================
+// DIFICULTAD PROGRESIVA
+// Pensada para chicos de 5-6 años: arranca bien
+// tranquilo y de a poco se pone más entretenido.
+// ============================================
+function obtenerDificultad(tiempoTranscurrido) {
+  if (tiempoTranscurrido < 15) {
+    // Nivel 1: bien lento y espaciado, para agarrar la mecánica
+    return { spawnDelay: 1200, minDuration: 6, maxDuration: 8 };
+  } else if (tiempoTranscurrido < 30) {
+    // Nivel 2: un poco más rápido
+    return { spawnDelay: 950, minDuration: 5, maxDuration: 7 };
+  } else if (tiempoTranscurrido < 45) {
+    // Nivel 3: más movimiento en pantalla
+    return { spawnDelay: 750, minDuration: 4, maxDuration: 6 };
+  } else {
+    // Nivel 4: el más desafiante, últimos 15 segundos
+    return { spawnDelay: 600, minDuration: 3.5, maxDuration: 5 };
+  }
+}
+
+// Programa la aparición del próximo globo, recalculando
+// la dificultad según cuánto tiempo pasó del juego
+function programarSiguienteGlobo() {
+  const tiempoTranscurrido = 60 - timeLeft;
+  const dificultad = obtenerDificultad(tiempoTranscurrido);
+
+  crearGlobo(dificultad);
+
+  gameInterval = setTimeout(programarSiguienteGlobo, dificultad.spawnDelay);
+}
+
 function inicializarJuego() {
   const btnGame = document.getElementById('btnGame');
   const closeGame = document.getElementById('closeGame');
@@ -369,8 +401,8 @@ function abrirJuego() {
   gameContainer.innerHTML = '';
   gameOverlay.style.display = 'flex';
 
-  // Iniciar generación de globos
-  gameInterval = setInterval(crearGlobo, 800);
+  // Iniciar generación de globos con dificultad progresiva
+  programarSiguienteGlobo();
 
   // Iniciar temporizador
   timerInterval = setInterval(() => {
@@ -405,7 +437,7 @@ function finalizarJuego() {
   saveScoreForm.style.display = 'block';
 }
 
-function crearGlobo() {
+function crearGlobo(dificultad) {
   const container = document.getElementById('gameContainer');
   if (!container) return;
 
@@ -421,8 +453,9 @@ function crearGlobo() {
   const item = gameItems[Math.floor(Math.random() * gameItems.length)];
   balloon.textContent = item;
 
-  // Velocidad aleatoria
-  const duration = 4 + Math.random() * 3;
+  // Velocidad según el nivel de dificultad actual (más rápido = más difícil)
+  const { minDuration, maxDuration } = dificultad || { minDuration: 4, maxDuration: 7 };
+  const duration = minDuration + Math.random() * (maxDuration - minDuration);
   balloon.style.transition = `bottom ${duration}s linear`;
 
   container.appendChild(balloon);

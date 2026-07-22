@@ -49,7 +49,7 @@ const CONFIG = {
 
   // === MÚSICA ===
   // Nombre del archivo de música (ej: "musica.mp3")
-  musica: "Toy Story - Yo Soy Tu Amigo Fiel (By_ Ricardo Murguía) (Video _ Letra)(MP3_320K).mp3",
+  musica: "toystory_music.mp3",
   reproducirAlTocar: true, // La música comenzará al tocar cualquier parte de la pantalla
 
   // === TEXTOS PERSONALIZABLES ===
