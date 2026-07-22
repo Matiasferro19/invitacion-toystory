@@ -313,7 +313,7 @@ let gameScore = 0;
 let gameInterval;
 let timerInterval;
 let timeLeft = 60;
-const gameItems = ['🤠', '🚀', '🦕'];
+const gameItems = ['🤠', '🚀', '🛸'];
 
 function inicializarJuego() {
   const btnGame = document.getElementById('btnGame');
