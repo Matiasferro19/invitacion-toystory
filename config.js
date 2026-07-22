@@ -14,6 +14,7 @@ const CONFIG = {
   fecha: "Domingo 2 de Agosto",
   hora: "16:00 Hs a 19:00 Hs",
   lugar: "MEGAFUN",
+  direccion: "Av. Siempre Viva 1234, San Miguel",
 
   // === FECHA PARA EL CONTADOR (formato: AAAA-MM-DD) ===
   // Importante: usa el formato año-mes-día con guiones
